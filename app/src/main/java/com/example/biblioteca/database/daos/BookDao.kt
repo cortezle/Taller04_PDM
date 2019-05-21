@@ -1,10 +1,12 @@
 package com.example.biblioteca.database.daos
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.biblioteca.database.entities.Book
 
+@Dao
 interface BookDao {
 
     @Query("SELECT * FROM book_table ORDER BY title ASC")
