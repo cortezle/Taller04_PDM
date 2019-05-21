@@ -1,6 +1,7 @@
 package com.example.biblioteca.database.repositories
 
 import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
 import com.example.biblioteca.database.daos.AuthorDao
 import com.example.biblioteca.database.daos.BookDao
 import com.example.biblioteca.database.daos.EditorialDao
@@ -11,6 +12,8 @@ import com.example.biblioteca.database.entities.Editorial
 import com.example.biblioteca.database.entities.Tag
 
 class BookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val editorialDao: EditorialDao, private val tagDao: TagDao) {
+
+    val allBooks : LiveData<List<Book>> = bookDao.getAllBooks()
 
     @WorkerThread
     suspend fun insertBook(book : Book){
