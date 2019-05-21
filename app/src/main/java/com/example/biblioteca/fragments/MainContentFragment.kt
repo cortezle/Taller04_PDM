@@ -63,12 +63,12 @@ class MainContentFragment : Fragment() {
     fun bindData(view: View) {
         view.tv_titulo.text = book.title
 
-        view.tv_autores.text = readArrayAuthor(book.authors)
+        view.tv_autores.text = book.authors
         view.tv_edicion.text = book.edition.toString()
-        view.tv_editorial.text = readArrayEditorial(book.editorial)
+        view.tv_editorial.text = book.editorial
         view.tv_isbn.text = book.isbn
         view.tv_resumen.text = book.synopsis
-        view.tv_tax.text = readArrayTags(book.tags)
+        view.tv_tax.text = book.tags
 
 
         Glide.with(view).load(book.cover)
@@ -77,29 +77,6 @@ class MainContentFragment : Fragment() {
 
     }
 
-    fun readArrayAuthor(list: ArrayList<Author>):String{
-        var listof:String=""
-        for (i in 0..list.size){
-            listof= listof + list[i].name +"\n"
-        }
-        return listof
-    }
-
-    fun readArrayTags(list: ArrayList<Tag>):String{
-        var listof:String=""
-        for (i in 0..list.size){
-            listof= listof + list[i].word +"\n"
-        }
-        return listof
-    }
-
-    fun readArrayEditorial(list: ArrayList<Editorial>):String{
-        var listof:String=""
-        for (i in 0..list.size){
-            listof= listof + list[i].name +"\n"
-        }
-        return listof
-    }
 
 
 }
