@@ -41,8 +41,10 @@ dependencies {
     // Dependencies for working with Architecture components
 
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"  // Room Base
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$rootProject.roomVersion" // Room Compiler
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion" // Support Coroutines con Koltin
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    // Support Coroutines con Koltin
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion" // Testing
 
     // Lifecycles components viewmodel and live data
