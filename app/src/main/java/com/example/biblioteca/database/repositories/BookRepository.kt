@@ -37,11 +37,11 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
 
     @WorkerThread
     suspend fun addFavourite(id : Long){
-        bookDao.addFavourite(id)
+        bookDao.addFavorite(id)
     }
 
     @WorkerThread
     suspend fun removeFavourite(id : Long){
-        bookDao.removeFavourite(id)
+        bookDao.removeFavorite(id)
     }
 }
