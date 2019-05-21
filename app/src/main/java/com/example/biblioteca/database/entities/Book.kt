@@ -9,7 +9,7 @@ data class Book(
     var authors : ArrayList<Author>,
     var cover : Byte,
     var edition : Int,
-    var editorial : Editorial,
+    var editorial : ArrayList<Editorial>,
     var synopsis : String,
     var tags : ArrayList<Tag>,
     var isbn : String,

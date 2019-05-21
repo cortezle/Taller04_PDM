@@ -7,8 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 
 import com.example.biblioteca.R
+import com.example.biblioteca.database.daos.BookDao
+import com.example.biblioteca.database.entities.Author
+import com.example.biblioteca.database.entities.Book
+import com.example.biblioteca.database.entities.Editorial
+import com.example.biblioteca.database.entities.Tag
+import kotlinx.android.synthetic.main.fragment_main_content.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,13 +35,15 @@ class MainContentFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    lateinit var book : Book
+
+
+    companion object{
+        fun newInstance (book: Book):MainContentFragment{
+            val newFragment = MainContentFragment()
+            newFragment.book = book
+            return  newFragment
         }
     }
 
@@ -42,62 +51,55 @@ class MainContentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_content, container, false)
+
+        super.onCreateView(inflater, container, savedInstanceState)
+        val view = inflater.inflate(R.layout.fragment_main_content,container,false)
+
+        bindData(view)
+
+        return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    fun bindData(view: View) {
+        view.tv_titulo.text = book.title
+
+        view.tv_autores.text = readArrayAuthor(book.authors)
+        view.tv_edicion.text = book.edition.toString()
+        view.tv_editorial.text = readArrayEditorial(book.editorial)
+        view.tv_isbn.text = book.isbn
+        view.tv_resumen.text = book.synopsis
+        view.tv_tax.text = readArrayTags(book.tags)
+
+
+        Glide.with(view).load(book.cover)
+            .placeholder(R.drawable.ic_launcher_background)
+            .into(view.iv_book2)
+
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+    fun readArrayAuthor(list: ArrayList<Author>):String{
+        var listof:String=""
+        for (i in 0..list.size){
+            listof= listof + list[i].name +"\n"
         }
+        return listof
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    fun readArrayTags(list: ArrayList<Tag>):String{
+        var listof:String=""
+        for (i in 0..list.size){
+            listof= listof + list[i].word +"\n"
+        }
+        return listof
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+    fun readArrayEditorial(list: ArrayList<Editorial>):String{
+        var listof:String=""
+        for (i in 0..list.size){
+            listof= listof + list[i].name +"\n"
+        }
+        return listof
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainContentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainContentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
