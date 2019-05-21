@@ -19,10 +19,10 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
     val allBooks : LiveData<List<Book>>
 
     init {
-        val booksDao = BookRoomDatabase.getDatabase(application).bookDao()
-        val editorialDao = BookRoomDatabase.getDatabase(application).editorialDao()
-        val tagDao = BookRoomDatabase.getDatabase(application).tagDao()
-        val authorDao = BookRoomDatabase.getDatabase(application).authorDao()
+        val booksDao = BookRoomDatabase.getDatabase(application,viewModelScope).bookDao()
+        val editorialDao = BookRoomDatabase.getDatabase(application,viewModelScope).editorialDao()
+        val tagDao = BookRoomDatabase.getDatabase(application,viewModelScope).tagDao()
+        val authorDao = BookRoomDatabase.getDatabase(application,viewModelScope).authorDao()
 
         repository = BookRepository(booksDao,authorDao,editorialDao,tagDao)
 
