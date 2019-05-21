@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.biblioteca.database.BookRoomDatabase
 import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.entities.Editorial
@@ -19,7 +20,12 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
 
     init {
         val booksDao = BookRoomDatabase.getDatabase(application).bookDao()
-        repository = BookRepository(booksDao)
+        val editorialDao = BookRoomDatabase.getDatabase(application).editorialDao()
+        val tagDao = BookRoomDatabase.getDatabase(application).tagDao()
+        val authorDao = BookRoomDatabase.getDatabase(application).authorDao()
+
+        repository = BookRepository(booksDao,authorDao,editorialDao,tagDao)
+
         allBooks = repository.allBooks
     }
 

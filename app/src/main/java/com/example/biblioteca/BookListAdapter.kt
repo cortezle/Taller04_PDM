@@ -9,10 +9,6 @@ import com.example.biblioteca.database.entities.Book
 
 class BookListAdapter (var items:List<Book>, val clickListener: (Book)->Unit): RecyclerView.Adapter<BookListAdapter.ViewHolder>(){
 
-
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListAdapter.ViewHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
