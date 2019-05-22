@@ -1,5 +1,6 @@
 package com.example.biblioteca
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.biblioteca.database.entities.Book
 import kotlinx.android.synthetic.main.book_model.view.*
 
-class BookListAdapter (var items:List<Book>, val clickListener: (Book)->Unit): RecyclerView.Adapter<BookListAdapter.ViewHolder>(){
+class BookListAdapter (val clickListener: (Book) -> Unit): RecyclerView.Adapter<BookListAdapter.ViewHolder>(){
+
+
+    private var books = emptyList<Book>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.book_model,parent,false)
@@ -17,11 +21,12 @@ class BookListAdapter (var items:List<Book>, val clickListener: (Book)->Unit): R
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return books.size
     }
 
     override fun onBindViewHolder(holder: BookListAdapter.ViewHolder, position: Int) {
-        holder.bind(items[position],clickListener)
+        val current = books[position]
+        holder.bind(current,clickListener)
     }
 
     class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
