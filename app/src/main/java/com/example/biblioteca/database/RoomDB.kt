@@ -67,10 +67,25 @@ public abstract class BookRoomDatabase : RoomDatabase(){
             }
         }
 
-        fun populateDatabase(bookDao: BookDao,editorialDao: EditorialDao,tagDao: TagDao,authorDao: AuthorDao){
+        suspend fun populateDatabase(bookDao: BookDao, editorialDao: EditorialDao, tagDao: TagDao, authorDao: AuthorDao){
 
-            // FILL THE DATABASE!!!
+            var book1 = Book("El extrangero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
+                "Meursault recibe un mañana un telegrama en el que se le notifica la muerte de su madre. " +
+                        "En una playa de Argelia mata inesperadamente a un hombre y es sometido a juicio absurdo." +
+                        "¿Cuales son las razones por las que vale la pena nacer, morir y matar? la historia de Meursault " +
+                        "reaviva nuestro intento por dar respuesta a estas preguntas",
+                "Nacer, Morir, Matar", "84-89669-45-7", 0)
+            var editorial1 = Editorial("Mateu Cromo S.A.")
+            var tag11 = Tag("Morir")
+            var tag12 = Tag("Nacer")
+            var tag13 = Tag("Matar")
+            var author1 = Author("Albert Camus")
 
+            bookDao.insert(book1)
+            tagDao.insert(tag11)
+            tagDao.insert(tag12)
+            tagDao.insert(tag13)
+            authorDao.insert(author1)
         }
     }
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.biblioteca.utils.AppConstants
-import kotlinx.android.synthetic.main.activity_coin_view.*
 import kotlinx.android.synthetic.main.fragment_main_content.*
 import kotlinx.android.synthetic.main.fragment_main_content.iv_book2
 import kotlinx.android.synthetic.main.fragment_main_content.tv_autores
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_main_content.tv_titulo
 class BookViewer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coin_view)
+        setContentView(R.layout.activity_book_view)
 
 
         val mIntent = intent
