@@ -5,17 +5,23 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProviders
+import com.example.biblioteca.database.viewmodels.BookViewModel
+import com.example.biblioteca.fragments.ListFragment
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bookViewModel: BookViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-
+        bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        ListFragment.newInstance(bookViewModel.allBooks)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

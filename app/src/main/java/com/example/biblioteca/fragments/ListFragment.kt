@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.biblioteca.BookListAdapter
 
@@ -19,9 +20,10 @@ import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {
 
-    lateinit var books: List<Book>
+    lateinit var books: LiveData<List<Book>>
     lateinit var bookadapter: BookListAdapter
     var click:OnFragmentInteractionListener? =  null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +31,6 @@ class ListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
         initRecyclerView(resources.configuration.orientation ,view)
         return view
-
     }
 
     fun initRecyclerView(orientation : Int, container: View){
@@ -42,7 +43,6 @@ class ListFragment : Fragment() {
             layoutManager = linearLayoutManager
         }
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -58,17 +58,14 @@ class ListFragment : Fragment() {
         click = null
     }
 
-
     interface OnFragmentInteractionListener {
         fun portraitItemClick(book: Book)
 
         fun landscapeItemClick(book:Book)
     }
 
-
-
     companion object {
-        fun newInstance(book: List<Book>): ListFragment{
+        fun newInstance(book: LiveData<List<Book>>): ListFragment{
             val newFragment = ListFragment()
             newFragment.books = book
             return newFragment
