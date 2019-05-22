@@ -68,6 +68,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
         }
 
         suspend fun populateDatabase(bookDao: BookDao, editorialDao: EditorialDao, tagDao: TagDao, authorDao: AuthorDao){
+            bookDao.deleteAll()
 
             var book1 = Book("El extrangero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
                 "Meursault recibe un mañana un telegrama en el que se le notifica la muerte de su madre. " +

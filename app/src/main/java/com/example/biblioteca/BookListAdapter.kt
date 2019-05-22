@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.book_model.view.*
 
 class BookListAdapter (val clickListener: (Book) -> Unit): RecyclerView.Adapter<BookListAdapter.ViewHolder>(){
 
-
     private var books = emptyList<Book>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListAdapter.ViewHolder {
@@ -27,6 +26,11 @@ class BookListAdapter (val clickListener: (Book) -> Unit): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: BookListAdapter.ViewHolder, position: Int) {
         val current = books[position]
         holder.bind(current,clickListener)
+    }
+
+    internal fun setWords(books : List<Book>){
+        this.books = books
+        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){

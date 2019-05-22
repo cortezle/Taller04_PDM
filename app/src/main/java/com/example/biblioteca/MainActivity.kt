@@ -1,5 +1,6 @@
 package com.example.biblioteca
 
+import android.content.res.Configuration
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bookViewModel: BookViewModel
+    private lateinit var listFragment: ListFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +23,13 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
-        ListFragment.newInstance(bookViewModel.allBooks)
-
+        listFragment = ListFragment.newInstance(bookViewModel)
+        val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+            R.id.fr_ly
+        else {
+            R.id.land_main_fragment
+        }
+        supportFragmentManager.beginTransaction().replace(resource, listFragment).commit()
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()

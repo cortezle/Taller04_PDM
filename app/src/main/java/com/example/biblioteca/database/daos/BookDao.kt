@@ -20,4 +20,7 @@ interface BookDao {
 
     @Query("UPDATE book_table SET favourite = 0 WHERE id = :id")
     fun removeFavorite(id : Long)
+
+    @Query("DELETE FROM book_table")
+    fun deleteAll()
 }

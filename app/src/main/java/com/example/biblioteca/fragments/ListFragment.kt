@@ -9,18 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.biblioteca.BookListAdapter
 
 import com.example.biblioteca.R
 import com.example.biblioteca.database.entities.Book
+import com.example.biblioteca.database.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
 
 class ListFragment : Fragment() {
 
-    lateinit var books: LiveData<List<Book>>
+    lateinit var bookViewModel: BookViewModel
     lateinit var bookadapter: BookListAdapter
     var click:OnFragmentInteractionListener? =  null
 
@@ -38,6 +40,9 @@ class ListFragment : Fragment() {
         if(orientation == Configuration.ORIENTATION_PORTRAIT) bookadapter = BookListAdapter({ book : Book -> click?.portraitItemClick(book)})
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) bookadapter = BookListAdapter( {book : Book -> click?.landscapeItemClick(book)})
         container.recyclerview.adapter = bookadapter
+        bookViewModel.allBooks.observe(this, Observer { boooks ->
+            boooks?.let{bookadapter.setWords(it)}
+        })
         container.recyclerview.apply {
             setHasFixedSize(true)
             layoutManager = linearLayoutManager
@@ -48,9 +53,9 @@ class ListFragment : Fragment() {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
             click = context
-        } else {
+        } /*else {
             throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
+        }*/
     }
 
     override fun onDetach() {
@@ -65,9 +70,9 @@ class ListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(book: LiveData<List<Book>>): ListFragment{
+        fun newInstance(book: BookViewModel): ListFragment{
             val newFragment = ListFragment()
-            newFragment.books = book
+            newFragment.bookViewModel = book
             return newFragment
 
         }
