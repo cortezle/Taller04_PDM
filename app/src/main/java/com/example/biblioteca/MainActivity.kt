@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
         listFragment = ListFragment.newInstance(bookViewModel)
         val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-            R.id.fr_ly
+            R.id.frameLayoutMain
         else {
             R.id.land_main_fragment
         }
