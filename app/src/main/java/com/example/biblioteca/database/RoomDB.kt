@@ -87,6 +87,18 @@ public abstract class BookRoomDatabase : RoomDatabase(){
             tagDao.insert(tag12)
             tagDao.insert(tag13)
             authorDao.insert(author1)
+
+
+            var book2 = Book("The Shining","Stephen King","1",1,
+                "Random House", "Jack Torrence's new job at the Overlook Hotel is the perfect chance for a fresh start. As the off-season caretaker at the atmospheric old hotel, he'll have plenty of time to spend reconnecting with his family," +
+                        " all though the hotel keeps some secrets to the one's who shine.","CD",
+                "978-0-385-12167-5",0)
+            var tag21 = Tag("Morir")
+            var author2 = Author("Stephen King")
+
+            bookDao.insert(book2)
+            tagDao.insert(tag21)
+            authorDao.insert(author2)
         }
     }
 

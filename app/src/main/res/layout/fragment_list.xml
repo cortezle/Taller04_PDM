@@ -8,10 +8,11 @@ android:orientation="vertical">
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+            android:id="@+id/recyclerviewList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorWhite"
-            tools:listitem="@layout/recyclerview_item" />
+            tools:listitem="@layout/recyclerview_item"
+        android:padding="8dp"/>
 
 </LinearLayout>

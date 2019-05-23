@@ -1,90 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="3" android:orientation="horizontal" android:gravity="center"
-                  android:background="#fff">
-
-        <ImageView android:layout_width="175dp" android:layout_height="175dp" android:id="@+id/iv_book2" android:layout_margin="8dp"
-        />
-
+        <ImageView
+            android:id="@+id/imageView_book"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_margin="8dp"/>
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
             android:text="Title: "
-            android:textColor="@android:color/holo_green_dark"/>
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:id="@+id/tv_titulo1"
+            android:text="Author's: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
 
-            android:textColor="@android:color/holo_green_dark" />
-
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="Author's: "  android:textSize="25dp" android:textColor="@android:color/holo_green_dark" />
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_autores1"  android:textColor="@android:color/holo_green_dark"/>
+        <TextView
+            android:id="@+id/textView_Author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
     </LinearLayout>
 
 
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:text="Edition: " android:textColor="@android:color/holo_green_dark" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_edicion1" android:textColor="@android:color/holo_green_dark" />
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edition: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_Edition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+    </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:text=" Editorial: "   android:textColor="@android:color/holo_green_dark" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_editorial1" android:textColor="@android:color/holo_green_dark" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Editorial: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_Editorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
 
     </LinearLayout>
 
 
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:text=" ISBN: " android:textColor="@android:color/holo_green_dark" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_isbn1" android:textColor="@android:color/holo_green_dark" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ISBN: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_Isbn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:text=" Synopsis: " android:textColor="@android:color/holo_green_dark" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_resumen1" android:textColor="@android:color/holo_green_dark" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Synopsis: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_Synopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
 
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent"  android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:text=" Tag's: " android:textColor="@android:color/holo_green_dark" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="25dp"
-                  android:id="@+id/tv_tax1" android:textColor="@android:color/holo_green_dark" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Tag's: "
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_Tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="25dp" />
 
     </LinearLayout>
 

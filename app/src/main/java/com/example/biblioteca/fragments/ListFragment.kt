@@ -39,11 +39,11 @@ class ListFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(this.context)
         if(orientation == Configuration.ORIENTATION_PORTRAIT) bookadapter = BookListAdapter({ book : Book -> click?.portraitItemClick(book)})
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) bookadapter = BookListAdapter( {book : Book -> click?.landscapeItemClick(book)})
-        container.recyclerview.adapter = bookadapter
+        container.recyclerviewList.adapter = bookadapter
         bookViewModel.allBooks.observe(this, Observer { boooks ->
             boooks?.let{bookadapter.setWords(it)}
         })
-        container.recyclerview.apply {
+        container.recyclerviewList.apply {
             setHasFixedSize(true)
             layoutManager = linearLayoutManager
         }

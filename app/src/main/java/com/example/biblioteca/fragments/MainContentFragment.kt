@@ -47,19 +47,19 @@ class MainContentFragment : Fragment() {
     }
 
     fun bindData(view: View) {
-        view.tv_titulo.text = book.title
+        view.textView_title.text = book.title
 
-        view.tv_autores.text = book.authors
-        view.tv_edicion.text = book.edition.toString()
-        view.tv_editorial.text = book.editorial
-        view.tv_isbn.text = book.isbn
-        view.tv_resumen.text = book.synopsis
-        view.tv_tax.text = book.tags
+        view.textView_Author.text = book.authors
+        view.textView_Edition.text = book.edition.toString()
+        view.textView_Editorial.text = book.editorial
+        view.textView_Isbn.text = book.isbn
+        view.textView_Synopsis.text = book.synopsis
+        view.textView_Tags.text = book.tags
 
 
         Glide.with(view).load(book.cover)
             .placeholder(R.drawable.ic_launcher_background)
-            .into(view.iv_book2)
+            .into(view.imageView_book)
 
     }
 

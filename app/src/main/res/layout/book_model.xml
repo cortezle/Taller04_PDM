@@ -5,16 +5,27 @@
               android:layout_height="match_parent">
 
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
 
     <ImageView
             android:id="@+id/image_book"
             android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="left"
+        android:padding="10dp"/>
 
     <TextView
             android:id="@+id/name_book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+        android:hint="flksjflksaj"/>
+
+</LinearLayout>
 
 </LinearLayout>
