@@ -5,4 +5,4 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "author_table")
 data class Author(var name : String)
-{@PrimaryKey(autoGenerate = true) var id : Long = 0}
+{@PrimaryKey(autoGenerate = true) var idAuthor : Long = 0}
