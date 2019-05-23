@@ -6,12 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "book_table")
 data class Book(
     var title : String,
-    var authors : String,
     var cover : String,
     var edition : Int,
-    var editorial : String,
     var synopsis : String,
-    var tags : String,
     var isbn : String,
     var favourite : Int
-){@PrimaryKey(autoGenerate = true) var id : Long = 0}
+){@PrimaryKey(autoGenerate = true) var idBook : Long = 0}

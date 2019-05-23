@@ -9,10 +9,7 @@ import com.example.biblioteca.database.daos.AuthorDao
 import com.example.biblioteca.database.daos.BookDao
 import com.example.biblioteca.database.daos.EditorialDao
 import com.example.biblioteca.database.daos.TagDao
-import com.example.biblioteca.database.entities.Author
-import com.example.biblioteca.database.entities.Book
-import com.example.biblioteca.database.entities.Editorial
-import com.example.biblioteca.database.entities.Tag
+import com.example.biblioteca.database.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +18,10 @@ import java.security.AccessControlContext
 @Database(entities = arrayOf(Book::class,
     Author::class,
     Editorial::class,
-    Tag::class),
+    Tag::class,
+    BookXAuthor::class,
+    BookXEditorial::class,
+    BookXTag::class),
     version = 1)
 public abstract class BookRoomDatabase : RoomDatabase(){
 
@@ -70,7 +70,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
         suspend fun populateDatabase(bookDao: BookDao, editorialDao: EditorialDao, tagDao: TagDao, authorDao: AuthorDao){
             bookDao.deleteAll()
 
-            var book1 = Book("El extrangero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
+            /*var book1 = Book("El extrangero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
                 "Meursault recibe un mañana un telegrama en el que se le notifica la muerte de su madre. " +
                         "En una playa de Argelia mata inesperadamente a un hombre y es sometido a juicio absurdo." +
                         "¿Cuales son las razones por las que vale la pena nacer, morir y matar? la historia de Meursault " +
@@ -98,7 +98,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             bookDao.insert(book2)
             tagDao.insert(tag21)
-            authorDao.insert(author2)
+            authorDao.insert(author2)*/
         }
     }
 
