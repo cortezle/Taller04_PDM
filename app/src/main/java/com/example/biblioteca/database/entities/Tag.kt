@@ -5,4 +5,4 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tag_table")
 data class Tag(var word : String)
-{@PrimaryKey(autoGenerate = true) var id : Long = 0}
+{@PrimaryKey(autoGenerate = true) var idTag : Long = 0}
