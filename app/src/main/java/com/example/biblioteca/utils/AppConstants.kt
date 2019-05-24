@@ -1,6 +1,7 @@
 package com.example.biblioteca.utils
 
 object AppConstants{
+    val TEXT_KEY_BOOK = "KeyBook"
     val TEXT_KEY_COVER = "textkeyCover"
     val TEXT_KEY_TITLE = ""
     val TEXT_KEY_AUTHOR = ""
