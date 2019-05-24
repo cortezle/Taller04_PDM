@@ -27,6 +27,7 @@ class ListFragment : Fragment() {
 
     lateinit var bookViewModel: BookViewModel
     lateinit var bookadapter: BookListAdapter
+    var flag : Boolean = true
     var click:OnFragmentInteractionListener? =  null
 
     override fun onCreateView(
@@ -35,6 +36,9 @@ class ListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+
+        if(savedInstanceState != null) flag = savedInstanceState.getBoolean(AppConstants.FLAG_KEY)
+
         initRecyclerView(resources.configuration.orientation ,view)
         return view
     }
@@ -44,13 +48,25 @@ class ListFragment : Fragment() {
         if(orientation == Configuration.ORIENTATION_PORTRAIT) bookadapter = BookListAdapter({ book : Book -> click?.portraitItemClick(book)})
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) bookadapter = BookListAdapter( {book : Book -> click?.landscapeItemClick(book)})
         container.recyclerviewList.adapter = bookadapter
-        bookViewModel.allBooks.observe(this, Observer { boooks ->
-            boooks?.let{bookadapter.setWords(it)}
-        })
+        if(flag){
+            bookViewModel.allBooks.observe(this, Observer { boooks ->
+                boooks?.let{bookadapter.setWords(it)}
+            })
+        } else{
+            bookViewModel.favoriteBooks.observe(this, Observer { boooks ->
+                boooks?.let{bookadapter.setWords(it)}
+            })
+        }
+
         container.recyclerviewList.apply {
             setHasFixedSize(true)
             layoutManager = linearLayoutManager
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(AppConstants.FLAG_KEY, flag)
     }
 
     override fun onAttach(context: Context) {
@@ -74,11 +90,10 @@ class ListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): ListFragment{
+        fun newInstance(flag : Boolean): ListFragment{
             val newFragment = ListFragment()
-            //newFragment.bookViewModel = book
+            newFragment.flag = flag
             return newFragment
-
         }
     }
 }

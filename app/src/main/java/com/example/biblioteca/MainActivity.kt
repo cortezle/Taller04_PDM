@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), ListFragment.OnFragmentInteractionList
         setSupportActionBar(toolbar)
 
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
-        listFragment = ListFragment.newInstance()
+        listFragment = ListFragment.newInstance(true)
         val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
             R.id.frameLayoutMain
         else {
@@ -57,18 +57,31 @@ class MainActivity : AppCompatActivity(), ListFragment.OnFragmentInteractionList
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.action_home -> {
+                listFragment = ListFragment.newInstance(true)
+                val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+                    R.id.frameLayoutMain
+                else {
+                    R.id.land_main_fragment
+                }
+                changeFragment(resource, listFragment)
+            }
+            R.id.action_favorite -> {
+                listFragment = ListFragment.newInstance(false)
+                val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+                    R.id.frameLayoutMain
+                else {
+                    R.id.land_main_fragment
+                }
+                changeFragment(resource, listFragment)
+            }
         }
+        return true
     }
 }

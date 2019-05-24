@@ -14,6 +14,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
 
     private val repository : BookRepository
     val allBooks : LiveData<List<Book>>
+    val favoriteBooks : LiveData<List<Book>>
     val allAuthors : LiveData<List<Author>>
     val allEditorials : LiveData<List<Editorial>>
     val allTags : LiveData<List<Tag>>
@@ -30,6 +31,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
         repository = BookRepository(booksDao,authorDao,editorialDao,tagDao, bookXAuthorDao, bookXEditorialDao, bookXTagDao)
 
         allBooks = repository.allBooks
+        favoriteBooks = repository.favoriteBooks
         allAuthors = repository.allAuthors
         allEditorials = repository.allEditorials
         allTags = repository.allTags

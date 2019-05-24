@@ -9,6 +9,7 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
                      private val bookXAuthorDao: BookXAuthorDao, private val bookXEditorialDao: BookXEditorialDao, private val bookXTagDao: BookXTagDao) {
 
     val allBooks : LiveData<List<Book>> = bookDao.getAllBooks()
+    val favoriteBooks : LiveData<List<Book>> = bookDao.getFavoriteBooks()
     val allAuthors : LiveData<List<Author>> = authorDao.getAllAuthor()
     val allEditorials : LiveData<List<Editorial>> = editorialDao.getAllEditorial()
     val allTags : LiveData<List<Tag>> = tagDao.getAllTag()

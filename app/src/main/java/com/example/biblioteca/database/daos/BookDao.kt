@@ -21,6 +21,9 @@ interface BookDao {
     @Query("UPDATE book_table SET favorite = 0 WHERE idBook = :id")
     fun removeFavorite(id : String)
 
+    @Query("SELECT * FROM book_table WHERE favorite = 1 ORDER BY title ASC")
+    fun getFavoriteBooks() : LiveData<List<Book>>
+
     @Query("DELETE FROM book_table")
     fun deleteAll()
 
