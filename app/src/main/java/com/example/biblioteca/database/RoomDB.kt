@@ -135,32 +135,65 @@ public abstract class BookRoomDatabase : RoomDatabase(){
             var arrayAuthor = authorDao.getAllAuthor()
             var idAuthor : Int
             if(arrayAuthor.size != 0) idAuthor = arrayAuthor.get(arrayAuthor.indexOf(arrayAuthor.get(arrayAuthor.size-1))).idAuthor
-            else idAuthor = 1
+            else idAuthor = 0
             for(i : Int in 1..authors.size){
                 var author = Author(idAuthor + i, authors.get(i-1))
-                authorDao.insert(author)
-                bookXAuthorDao.insert(BookXAuthor(book.idBook, author.idAuthor))
+                if(idAuthor != 0){
+                    if(checkAuthors(author.name, arrayAuthor)){
+                        authorDao.insert(author)
+                        bookXAuthorDao.insert(BookXAuthor(book.idBook, author.idAuthor))
+                    }
+                }
             }
 
             var arrayEditorial = editorialDao.getAllEditorial()
             var idEditorial : Int
             if(arrayAuthor.size != 0) idEditorial = arrayEditorial.get(arrayEditorial.indexOf(arrayEditorial.get(arrayEditorial.size-1))).idEditorial
-            else idEditorial = 1
+            else idEditorial = 0
             for(i : Int in 1..editorials.size){
                 var edit = Editorial(idEditorial + i, editorials.get(i-1))
-                editorialDao.insert(edit)
-                bookXEditorialDao.insert(BookXEditorial(book.idBook, edit.idEditorial))
+                if(idAuthor != 0){
+                    if(checkEditorials(edit.name, arrayEditorial)){
+                        editorialDao.insert(edit)
+                        bookXEditorialDao.insert(BookXEditorial(book.idBook, edit.idEditorial))
+                    }
+                }
             }
 
             var arrayTag = tagDao.getAllTag()
             var idTag : Int
             if(arrayTag.size != 0) idTag = arrayTag.get(arrayTag.indexOf(arrayTag.get(arrayTag.size-1))).idTag
-            else idTag = 1
+            else idTag = 0
             for(i : Int in 1..tags.size){
                 var tag = Tag(idTag+i, tags.get(i-1))
-                tagDao.insert(tag)
-                bookXTagDao.insert(BookXTag(book.idBook, tag.idTag))
+                if(idTag != 0){
+                    if(checkTags(tag.word, arrayTag)){
+                        tagDao.insert(tag)
+                        bookXTagDao.insert(BookXTag(book.idBook, tag.idTag))
+                    }
+                }
             }
+        }
+
+        fun checkAuthors(name : String, arrayAuthor: List<Author>) : Boolean{
+            for(author : Author in arrayAuthor){
+                if(name == author.name) return false
+            }
+            return true
+        }
+
+        fun checkEditorials(name : String, arrayEditorial: List<Editorial>) : Boolean{
+            for(edit : Editorial in arrayEditorial){
+                if(name == edit.name) return false
+            }
+            return true
+        }
+
+        fun checkTags(word : String, arrayTag: List<Tag>) : Boolean{
+            for(tag : Tag in arrayTag){
+                if(word == tag.word) return false
+            }
+            return true
         }
     }
 
