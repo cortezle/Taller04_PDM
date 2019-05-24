@@ -1,5 +1,6 @@
 package com.example.biblioteca.database.entities
 
+import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity

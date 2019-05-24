@@ -95,4 +95,78 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
         repository.removeFavorite(idBook)
     }
 
+    fun insertListAuthor(authors : ArrayList<String>, book : Book){
+        var arrayAuthor = allAuthors.value
+        if(arrayAuthor != null){
+            var idAuthor : Int
+            if(arrayAuthor.size != 0) idAuthor = arrayAuthor.get(arrayAuthor.indexOf(arrayAuthor.get(arrayAuthor.size-1))).idAuthor
+            else idAuthor = 0
+            for(i : Int in 1..authors.size){
+                var author = Author(idAuthor + i, authors.get(i-1))
+                if(idAuthor != 0){
+                    if(checkAuthors(author.name, arrayAuthor)){
+                        insertAuthor(author)
+                        insertBookXAuthor(BookXAuthor(book.idBook, author.idAuthor))
+                    }
+                }
+            }
+        }
+    }
+
+    fun insertListEditorial(edits : ArrayList<String>, book: Book){
+        var arrayEditorial = allEditorials.value
+        if(arrayEditorial != null){
+            var idEditorial : Int
+            if(arrayEditorial.size != 0) idEditorial = arrayEditorial.get(arrayEditorial.indexOf(arrayEditorial.get(arrayEditorial.size-1))).idEditorial
+            else idEditorial = 0
+            for(i : Int in 1..edits.size){
+                var edit = Editorial(idEditorial + i, edits.get(i-1))
+                if(idEditorial != 0){
+                    if(checkEditorials(edit.name, arrayEditorial)){
+                        insertEditorial(edit)
+                        insertBookXEditorial(BookXEditorial(book.idBook, edit.idEditorial))
+                    }
+                }
+            }
+        }
+    }
+
+    fun insertListTag(tags : ArrayList<String>, book: Book){
+        var arrayTag = allTags.value
+        if(arrayTag != null){
+            var idTag : Int
+            if(arrayTag.size != 0) idTag = arrayTag.get(arrayTag.indexOf(arrayTag.get(arrayTag.size-1))).idTag
+            else idTag = 0
+            for(i : Int in 1..tags.size){
+                var tag = Tag(idTag+i, tags.get(i-1))
+                if(idTag != 0){
+                    if(checkTags(tag.word, arrayTag)){
+                        insertTag(tag)
+                        insertBookXTag(BookXTag(book.idBook, tag.idTag))
+                    }
+                }
+            }
+        }
+    }
+
+    private fun checkAuthors(name : String, arrayAuthor: List<Author>) : Boolean{
+        for(author : Author in arrayAuthor){
+            if(name == author.name) return false
+        }
+        return true
+    }
+
+    private fun checkEditorials(name : String, arrayEditorial: List<Editorial>) : Boolean{
+        for(edit : Editorial in arrayEditorial){
+            if(name == edit.name) return false
+        }
+        return true
+    }
+
+    private fun checkTags(word : String, arrayTag: List<Tag>) : Boolean{
+        for(tag : Tag in arrayTag){
+            if(word == tag.word) return false
+        }
+        return true
+    }
 }
