@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.biblioteca.BookListAdapter
 
@@ -17,6 +18,7 @@ import com.example.biblioteca.R
 import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.viewmodels.BookViewModel
+import com.example.biblioteca.utils.AppConstants
 import kotlinx.android.synthetic.main.content_main.view.*
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
@@ -32,6 +34,7 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
+        bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
         initRecyclerView(resources.configuration.orientation ,view)
         return view
     }
@@ -54,9 +57,9 @@ class ListFragment : Fragment() {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
             click = context
-        } /*else {
+        } else {
             throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }*/
+        }
     }
 
     override fun onDetach() {
@@ -71,9 +74,9 @@ class ListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(book: BookViewModel): ListFragment{
+        fun newInstance(): ListFragment{
             val newFragment = ListFragment()
-            newFragment.bookViewModel = book
+            //newFragment.bookViewModel = book
             return newFragment
 
         }
