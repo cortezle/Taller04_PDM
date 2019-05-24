@@ -63,6 +63,30 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
         repository.insertBookXTag(bookXTag)
     }
 
+    fun getBookPerAuthor(authorId : Int) = viewModelScope.launch(Dispatchers.IO){
+        repository.getBookPerAuthor(authorId)
+    }
+
+    fun getAuthorPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
+        repository.getAuthorPerBook(bookId)
+    }
+
+    fun getBookPerEditorial(editId : Int) = viewModelScope.launch(Dispatchers.IO){
+        repository.getBookPerEditorial(editId)
+    }
+
+    fun getEditorialPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
+        repository.getEditorialPerBook(bookId)
+    }
+
+    fun getBookPerTag(tagId : Int) = viewModelScope.launch(Dispatchers.IO){
+        repository.getBookPerTag(tagId)
+    }
+
+    fun getTagPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
+        repository.getTagPerBook(bookId)
+    }
+
     fun addFavorite(idBook : String) = viewModelScope.launch(Dispatchers.IO){
         repository.addFavorite(idBook)
     }
