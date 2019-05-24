@@ -39,6 +39,36 @@ class gkBookRepository(private val bookDao : BookDao, private val authorDao : Au
     }
 
     @WorkerThread
+    fun getBookPerAuthor(authorId : Int){
+        bookXAuthorDao.getBookPerAuthor(authorId)
+    }
+
+    @WorkerThread
+    fun getAuthorPerBook(bookId : String){
+        bookXAuthorDao.getAuthorPerBook(bookId)
+    }
+
+    @WorkerThread
+    fun getBookPerEditorial(editId : Int){
+        bookXEditorialDao.getBookPerEditorial(editId)
+    }
+
+    @WorkerThread
+    fun getEditorialPerBook(bookId : String){
+        bookXEditorialDao.getEditorialPerBook(bookId)
+    }
+
+    @WorkerThread
+    fun getBookPerTag(tagId : Int){
+        bookXTagDao.getBookPerTag(tagId)
+    }
+
+    @WorkerThread
+    fun getTagPerBook(bookId : String){
+        bookXTagDao.getTagPerBook(bookId)
+    }
+
+    @WorkerThread
     suspend fun insertBookXEditorial(bookXEditorial: BookXEditorial){
         bookXEditorialDao.insert(bookXEditorial)
     }
