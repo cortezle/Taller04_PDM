@@ -24,20 +24,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp"/>
 
         <TextView
             android:id="@+id/textView_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp"/>
 
     </LinearLayout>
@@ -46,20 +47,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author's: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
     </LinearLayout>
 
@@ -68,20 +70,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edition: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Edition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
     </LinearLayout>
 
@@ -90,20 +93,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Editorial: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Editorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -113,20 +117,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" ISBN: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Isbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -135,20 +140,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Synopsis: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Synopsis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -157,20 +163,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Tag's: "
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView_Tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
 
     </LinearLayout>
