@@ -12,12 +12,12 @@ import com.example.biblioteca.database.entities.Editorial
 interface BookXEditorialDao {
 
     @Insert
-    fun insert(bookXEditorial: BookXEditorial)
+    suspend fun insert(bookXEditorial: BookXEditorial)
 
     @Query("SELECT * FROM book_table INNER JOIN bookXEditorial_table ON book_table.idBook = bookXEditorial_table.bookId WHERE bookXEditorial_table.editorialId = :editorialId")
-    fun getBookPerEditorial(editorialId : Long) : LiveData<List<Book>>
+    fun getBookPerEditorial(editorialId : Int) : LiveData<List<Book>>
 
     @Query("SELECT * FROM editorial_table INNER JOIN bookXEditorial_table ON editorial_table.idEditorial = bookXEditorial_table.editorialId WHERE bookXEditorial_table.bookId = :bookId")
-    fun getEditorialPerBook(bookId : Long) : LiveData<List<Editorial>>
+    fun getEditorialPerBook(bookId : String) : LiveData<List<Editorial>>
 
 }

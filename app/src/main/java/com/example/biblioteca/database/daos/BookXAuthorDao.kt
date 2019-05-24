@@ -12,12 +12,12 @@ import com.example.biblioteca.database.entities.BookXAuthor
 interface BookXAuthorDao {
 
     @Insert
-    fun insert(bookXauthor : BookXAuthor)
+    suspend fun insert(bookXauthor : BookXAuthor)
 
     @Query("SELECT * FROM book_table INNER JOIN bookXAuthor_table ON book_table.idBook = bookXAuthor_table.bookId WHERE bookXAuthor_table.authorId = :authorId")
-    fun getBookPerAuthor(authorId : Long) : LiveData<List<Book>>
+    fun getBookPerAuthor(authorId : Int) : LiveData<List<Book>>
 
     @Query("SELECT * FROM author_table INNER JOIN bookXAuthor_table ON author_table.idAuthor = bookXAuthor_table.authorId WHERE bookXAuthor_table.bookId = :bookId")
-    fun getAuthorPerBook(bookId : Long) : LiveData<List<Author>>
+    fun getAuthorPerBook(bookId : String) : LiveData<List<Author>>
 
 }

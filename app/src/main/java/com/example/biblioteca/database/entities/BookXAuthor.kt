@@ -9,6 +9,6 @@ import androidx.room.ForeignKey
         ForeignKey(entity = Author::class, parentColumns = ["idAuthor"], childColumns = ["authorId"])]
 )
 data class BookXAuthor (
-    var bookId : Long,
-    var authorId : Long
+    var bookId : String,
+    var authorId : Int
 )

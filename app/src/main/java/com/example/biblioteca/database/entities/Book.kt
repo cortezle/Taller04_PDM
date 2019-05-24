@@ -9,6 +9,6 @@ data class Book(
     var cover : String,
     var edition : Int,
     var synopsis : String,
-    var isbn : String,
-    var favourite : Int
-){@PrimaryKey(autoGenerate = true) var idBook : Long = 0}
+    @PrimaryKey var idBook : String,
+    var favorite : Int
+)

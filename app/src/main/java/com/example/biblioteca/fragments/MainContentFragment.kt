@@ -49,12 +49,12 @@ class MainContentFragment : Fragment() {
     fun bindData(view: View) {
         view.textView_title.text = book.title
 
-        view.textView_Author.text = book.authors
+        //view.textView_Author.text = book.authors
         view.textView_Edition.text = book.edition.toString()
-        view.textView_Editorial.text = book.editorial
-        view.textView_Isbn.text = book.isbn
+        //view.textView_Editorial.text = book.editorial
+        view.textView_Isbn.text = book.idBook
         view.textView_Synopsis.text = book.synopsis
-        view.textView_Tags.text = book.tags
+        //view.textView_Tags.text = book.tags
 
 
         Glide.with(view).load(book.cover)

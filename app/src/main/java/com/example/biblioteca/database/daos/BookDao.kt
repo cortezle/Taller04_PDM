@@ -15,10 +15,10 @@ interface BookDao {
     @Insert
     suspend fun insert(book : Book)
 
-    @Query("UPDATE book_table SET favourite = 1 WHERE id = :id")
+    @Query("UPDATE book_table SET favorite = 1 WHERE idBook = :id")
     fun addFavorite(id : Long)
 
-    @Query("UPDATE book_table SET favourite = 0 WHERE id = :id")
+    @Query("UPDATE book_table SET favorite = 0 WHERE idBook = :id")
     fun removeFavorite(id : Long)
 
     @Query("DELETE FROM book_table")

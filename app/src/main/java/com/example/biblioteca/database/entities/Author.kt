@@ -4,5 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "author_table")
-data class Author(var name : String)
-{@PrimaryKey(autoGenerate = true) var idAuthor : Long = 0}
+data class Author(
+    @PrimaryKey var idAuthor : Int,
+    var name : String)
