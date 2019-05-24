@@ -1,5 +1,6 @@
 package com.example.biblioteca.database.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -13,5 +14,5 @@ interface AuthorDao {
     suspend fun insert(author : Author)
 
     @Query("SELECT * FROM author_table ORDER BY idAuthor")
-    fun getAllAuthor() : List<Author>
+    fun getAllAuthor() : LiveData<List<Author>>
 }

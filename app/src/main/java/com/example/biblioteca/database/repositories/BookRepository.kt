@@ -2,18 +2,16 @@ package com.example.biblioteca.database.repositories
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.example.biblioteca.database.daos.AuthorDao
-import com.example.biblioteca.database.daos.BookDao
-import com.example.biblioteca.database.daos.EditorialDao
-import com.example.biblioteca.database.daos.TagDao
-import com.example.biblioteca.database.entities.Author
-import com.example.biblioteca.database.entities.Book
-import com.example.biblioteca.database.entities.Editorial
-import com.example.biblioteca.database.entities.Tag
+import com.example.biblioteca.database.daos.*
+import com.example.biblioteca.database.entities.*
 
-class BookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val editorialDao: EditorialDao, private val tagDao: TagDao) {
+class BookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val editorialDao: EditorialDao, private val tagDao: TagDao,
+                     private val bookXAuthorDao: BookXAuthorDao, private val bookXEditorialDao: BookXEditorialDao, private val bookXTagDao: BookXTagDao) {
 
     val allBooks : LiveData<List<Book>> = bookDao.getAllBooks()
+    val allAuthors : LiveData<List<Author>> = authorDao.getAllAuthor()
+    val allEditorials : LiveData<List<Editorial>> = editorialDao.getAllEditorial()
+    val allTags : LiveData<List<Tag>> = tagDao.getAllTag()
 
     @WorkerThread
     suspend fun insertBook(book : Book){
@@ -36,12 +34,27 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
     }
 
     @WorkerThread
-    suspend fun addFavourite(id : Long){
+    suspend fun insertBookXAuthor(bookXAuthor: BookXAuthor){
+        bookXAuthorDao.insert(bookXAuthor)
+    }
+
+    @WorkerThread
+    suspend fun insertBookXEditorial(bookXEditorial: BookXEditorial){
+        bookXEditorialDao.insert(bookXEditorial)
+    }
+
+    @WorkerThread
+    suspend fun insertBookXTag(bookXTag : BookXTag){
+        bookXTagDao.insert(bookXTag)
+    }
+
+    @WorkerThread
+    suspend fun addFavorite(id : String){
         bookDao.addFavorite(id)
     }
 
     @WorkerThread
-    suspend fun removeFavourite(id : Long){
+    suspend fun removeFavorite(id : String){
         bookDao.removeFavorite(id)
     }
 }

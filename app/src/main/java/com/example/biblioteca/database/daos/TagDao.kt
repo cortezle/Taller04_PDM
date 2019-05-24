@@ -1,5 +1,6 @@
 package com.example.biblioteca.database.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -12,6 +13,6 @@ interface TagDao {
     suspend fun insert(tag : Tag)
 
     @Query("SELECT * FROM tag_table ORDER BY idTag")
-    fun getAllTag() : List<Tag>
+    fun getAllTag() : LiveData<List<Tag>>
 
 }
