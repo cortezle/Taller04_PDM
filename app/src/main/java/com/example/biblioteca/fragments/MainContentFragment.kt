@@ -38,6 +38,7 @@ class MainContentFragment : Fragment() {
 
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
+
         if(savedInstanceState != null) book = savedInstanceState.getParcelable(AppConstants.TEXT_KEY_BOOK)
         bindData(view)
         return view
