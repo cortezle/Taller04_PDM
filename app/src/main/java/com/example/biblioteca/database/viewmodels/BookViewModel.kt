@@ -65,37 +65,25 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
         repository.insertBookXTag(bookXTag)
     }
 
-    fun getBookPerAuthor(authorId : Int) = viewModelScope.launch(Dispatchers.IO){
-        repository.getBookPerAuthor(authorId)
-    }
+    fun getBookPerAuthor(authorId : Int):LiveData<List<Book>> = repository.getBookPerAuthor(authorId)
 
-    fun getAuthorPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
-        repository.getAuthorPerBook(bookId)
-    }
 
-    fun getBookPerEditorial(editId : Int) = viewModelScope.launch(Dispatchers.IO){
-        repository.getBookPerEditorial(editId)
-    }
+    fun getAuthorPerBook(bookId : String):LiveData<List<Author>> = repository.getAuthorPerBook(bookId)
 
-    fun getEditorialPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
-        repository.getEditorialPerBook(bookId)
-    }
 
-    fun getBookPerTag(tagId : Int) = viewModelScope.launch(Dispatchers.IO){
-        repository.getBookPerTag(tagId)
-    }
+    fun getBookPerEditorial(editId : Int): LiveData<List<Book>> = repository.getBookPerEditorial(editId)
 
-    fun getTagPerBook(bookId : String) = viewModelScope.launch(Dispatchers.IO){
-        repository.getTagPerBook(bookId)
-    }
+    fun getEditorialPerBook(bookId : String): LiveData<List<Editorial>> = repository.getEditorialPerBook(bookId)
 
-    fun addFavorite(idBook : String) = viewModelScope.launch(Dispatchers.IO){
-        repository.addFavorite(idBook)
-    }
+    fun getBookPerTag(tagId : Int): LiveData<List<Book>> = repository.getBookPerTag(tagId)
 
-    fun removeFavorite(idBook : String) = viewModelScope.launch(Dispatchers.IO){
-        repository.removeFavorite(idBook)
-    }
+
+    fun getTagPerBook(bookId : String): LiveData<List<Tag>> = repository.getTagPerBook(bookId)
+
+    fun addFavorite(idBook : String) = repository.addFavorite(idBook)
+
+    fun removeFavorite(idBook : String) = repository.removeFavorite(idBook)
+
 
     fun insertListAuthor(authors : ArrayList<String>, book : Book){
         var arrayAuthor = allAuthors.value

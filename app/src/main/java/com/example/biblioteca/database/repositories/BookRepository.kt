@@ -39,34 +39,32 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
         bookXAuthorDao.insert(bookXAuthor)
     }
 
-    @WorkerThread
-    fun getBookPerAuthor(authorId : Int){
-        bookXAuthorDao.getBookPerAuthor(authorId)
+    fun getBookPerAuthor(authorId : Int):LiveData<List<Book>>{
+     return   bookXAuthorDao.getBookPerAuthor(authorId)
     }
 
-    @WorkerThread
-    fun getAuthorPerBook(bookId : String){
-        bookXAuthorDao.getAuthorPerBook(bookId)
+    fun getAuthorPerBook(bookId : String):LiveData<List<Author>>{
+        return bookXAuthorDao.getAuthorPerBook(bookId)
     }
 
-    @WorkerThread
-    fun getBookPerEditorial(editId : Int){
-        bookXEditorialDao.getBookPerEditorial(editId)
+
+    fun getBookPerEditorial(editId : Int): LiveData<List<Book>>{
+       return bookXEditorialDao.getBookPerEditorial(editId)
     }
 
-    @WorkerThread
-    fun getEditorialPerBook(bookId : String){
-        bookXEditorialDao.getEditorialPerBook(bookId)
+
+    fun getEditorialPerBook(bookId : String): LiveData<List<Editorial>>{
+        return bookXEditorialDao.getEditorialPerBook(bookId)
     }
 
-    @WorkerThread
-    fun getBookPerTag(tagId : Int){
-        bookXTagDao.getBookPerTag(tagId)
+
+    fun getBookPerTag(tagId : Int): LiveData<List<Book>>{
+        return bookXTagDao.getBookPerTag(tagId)
     }
 
-    @WorkerThread
-    fun getTagPerBook(bookId : String){
-        bookXTagDao.getTagPerBook(bookId)
+
+    fun getTagPerBook(bookId : String): LiveData<List<Tag>>{
+        return bookXTagDao.getTagPerBook(bookId)
     }
 
     @WorkerThread
@@ -79,13 +77,12 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
         bookXTagDao.insert(bookXTag)
     }
 
-    @WorkerThread
-    suspend fun addFavorite(id : String){
+
+    fun addFavorite(id : String){
         bookDao.addFavorite(id)
     }
 
-    @WorkerThread
-    suspend fun removeFavorite(id : String){
+    fun removeFavorite(id : String){
         bookDao.removeFavorite(id)
     }
 }

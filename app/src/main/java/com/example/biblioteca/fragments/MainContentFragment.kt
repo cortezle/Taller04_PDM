@@ -1,10 +1,13 @@
 package com.example.biblioteca.fragments
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 
@@ -13,6 +16,7 @@ import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.viewmodels.BookViewModel
 import com.example.biblioteca.utils.AppConstants
+import kotlinx.android.synthetic.main.fragment_main_content.*
 import kotlinx.android.synthetic.main.fragment_main_content.view.*
 
 class MainContentFragment : Fragment() {
@@ -52,7 +56,7 @@ class MainContentFragment : Fragment() {
     fun bindData(view: View) {
         view.textView_title.text = book.title
 
-        //view.textView_Author.text = getAuthor(book.idBook)
+        view.textView_Author.text = getAuthor(book.idBook)
         view.textView_Edition.text = book.edition.toString()
         //view.textView_Editorial.text = book.editorial
         view.textView_Isbn.text = book.idBook
@@ -65,14 +69,16 @@ class MainContentFragment : Fragment() {
 
     }
 
-    /*fun getAuthor(bookId : String): String{
-        val array = bookViewModel.getAuthorPerBook(bookId)
+    fun getAuthor(bookId : String): String{
+        val array = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
         var cadena = ""
-        /*for(author : Author in array){
+        for(author : Author in array){
+            cadena = author.name + " "
+            println(author.name)
 
-        }*/
-    }*/
-
+        }
+        return cadena
+    }
 
 
 }

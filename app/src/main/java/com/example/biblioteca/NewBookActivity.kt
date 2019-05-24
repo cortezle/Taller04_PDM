@@ -45,7 +45,14 @@ class NewBookActivity : AppCompatActivity() {
             var tags = subString(editText_tags.text.toString())
 
             var book = Book(title, "cover.jpg", edicion, synopsis, id, 0)
-            bookViewModel.insertBook(book)
+            if (edicion.equals(Int)){
+
+                Toast.makeText(this, "el campo edicion tiene que ser un numero", Toast.LENGTH_SHORT).show()
+            }else
+            {
+                bookViewModel.insertBook(book)
+            }
+
             bookViewModel.insertListAuthor(authors, book)
             bookViewModel.insertListEditorial(edits, book)
             bookViewModel.insertListTag(tags, book)
