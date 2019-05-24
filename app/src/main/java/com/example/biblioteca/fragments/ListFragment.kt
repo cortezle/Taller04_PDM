@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.biblioteca.BookListAdapter
 
 import com.example.biblioteca.R
+import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
