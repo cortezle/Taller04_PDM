@@ -182,4 +182,17 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/cardview_light_background"
+            android:dra="@drawable/ic_star_amarillo_24dp"
+            android:drawableTop="@android:drawable/btn_star_big_on" />
+
+    </LinearLayout>
 </LinearLayout>
