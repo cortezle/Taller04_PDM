@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity(), ListFragment.OnFragmentInteractionList
             startActivityForResult(intent, newBookActivityRequestCode)
         }
 
-        button_save.setOnClickListener {
+        /*button_save.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivityForResult(intent, newBookActivityRequestCode)
-        }
+        }*/
 
 
     }
