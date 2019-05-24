@@ -63,7 +63,8 @@ public abstract class BookRoomDatabase : RoomDatabase(){
             super.onOpen(db)
             INSTANCE?.let {database ->
                 scope.launch(Dispatchers.IO){
-                    if(database.authorDao().getAllAuthor().value!!.size == 0) populateDatabase(database.bookDao(),database.editorialDao(),database.tagDao(),database.authorDao(), database.bookXAuthorDao(), database.bookXEditorialDao(), database.bookXTagDao())
+                    if(database.bookDao().verify().size == 0) populateDatabase(database.bookDao(),database.editorialDao(),database.tagDao(),database.authorDao(), database.bookXAuthorDao(), database.bookXEditorialDao(), database.bookXTagDao())
+
                 }
             }
         }

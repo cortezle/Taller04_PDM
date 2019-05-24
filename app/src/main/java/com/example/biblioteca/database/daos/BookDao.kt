@@ -23,4 +23,7 @@ interface BookDao {
 
     @Query("DELETE FROM book_table")
     fun deleteAll()
+
+    @Query("SELECT * FROM book_table")
+    fun verify() : List<Book>
 }
