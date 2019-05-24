@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import com.example.biblioteca.database.daos.*
 import com.example.biblioteca.database.entities.*
 
-class BookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val editorialDao: EditorialDao, private val tagDao: TagDao,
+class gkBookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val editorialDao: EditorialDao, private val tagDao: TagDao,
                      private val bookXAuthorDao: BookXAuthorDao, private val bookXEditorialDao: BookXEditorialDao, private val bookXTagDao: BookXTagDao) {
 
     val allBooks : LiveData<List<Book>> = bookDao.getAllBooks()

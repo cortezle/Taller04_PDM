@@ -126,6 +126,29 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book5, arrayOf(author5), arrayOf(editorial5, editorial51), arrayOf(tag51,tag52), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
 
+            var book6 = Book("El Alquimista", "caratula.jpg", 1,
+                "Poderosa, sencilla, sabia e inspiradora, ésta es la historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hacia el " +
+                        "desierto egipcio en busca de un tesoro oculto en las pirámides. Nadie sabe lo que" +
+                        " contiene el tesoro, ni si Santiago será capaz de superar los obstáculos del camino. "," 978-84-08-14475-5",0)
+            var author6 = "Paulo Cohelo"
+            var editorial6 = "Planeta"
+            var tag61 = "inspirador"
+            var tag62 = "suenio"
+
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book6, arrayOf(author6), arrayOf(editorial6), arrayOf(tag61,tag62), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+
+            var book7 = Book("La espia", "caratula.jpg", 1,
+                "Paulo Coelho ahonda de forma magistral en la vida de una de las mujeres más fascinantes y desconocidas de la Historia. Sensual, fuerte y contradictoria, " +
+                        "Mata Hari se ha convertido en un icono " +
+                        "por enfrentarse a los cánones de su época y luchar por ser una mujer independiente y libre en un mundo convulso."," 978-84-08-16180-6",0)
+            var author7 = "Paulo Cohelo"
+            var editorial7 = "Planeta"
+            var tag71 = "Primera guerra mundial"
+            var tag72 = "indomable"
+            var tag73 = "mujer"
+
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book7, arrayOf(author7), arrayOf(editorial7), arrayOf(tag71,tag72,tag73), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+
         }
 
         suspend fun insertMain(bookDao : BookDao, authorDao: AuthorDao, editorialDao: EditorialDao, tagDao: TagDao, book : Book, authors : Array<String>, editorials: Array<String>,
@@ -202,11 +225,4 @@ public abstract class BookRoomDatabase : RoomDatabase(){
             return true
         }
     }
-
-
-
-
-
-
-
 }
