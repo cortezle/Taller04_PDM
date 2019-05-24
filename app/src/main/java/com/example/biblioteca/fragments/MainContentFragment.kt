@@ -15,15 +15,12 @@ import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.entities.Editorial
 import com.example.biblioteca.database.entities.Tag
+import com.example.biblioteca.utils.AppConstants
 import kotlinx.android.synthetic.main.fragment_main_content.view.*
 
 class MainContentFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
     lateinit var book : Book
-
 
     companion object{
         fun newInstance (book: Book):MainContentFragment{
@@ -41,9 +38,16 @@ class MainContentFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main_content,container,false)
 
+        if(savedInstanceState != null) book = savedInstanceState.getParcelable(AppConstants.TEXT_KEY_BOOK)
+
         bindData(view)
 
         return view
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(AppConstants.TEXT_KEY_BOOK, book)
     }
 
     fun bindData(view: View) {
