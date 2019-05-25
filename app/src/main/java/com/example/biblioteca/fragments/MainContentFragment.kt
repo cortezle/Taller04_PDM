@@ -16,6 +16,7 @@ import com.example.biblioteca.R
 import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
 import com.example.biblioteca.database.entities.Editorial
+import com.example.biblioteca.database.entities.Tag
 import com.example.biblioteca.database.viewmodels.BookViewModel
 import com.example.biblioteca.utils.AppConstants
 import kotlinx.android.synthetic.main.fragment_main_content.*
@@ -61,16 +62,16 @@ class MainContentFragment : Fragment() {
 
         view.textView_Author.text = getAuthor(book.idBook)
         view.textView_Edition.text = book.edition.toString()
-        //¿view.textView_Editorial.text = book.editorial
+        view.textView_Editorial.text = getEditorial(book.idBook)
         view.textView_Isbn.text = book.idBook
         view.textView_Synopsis.text = book.synopsis
-        //view.textView_Tags.text = book.tags
+        view.textView_Tags.text = getTag(book.idBook)
+
         view.button_fav.setBackgroundColor(Color.TRANSPARENT)
+
         if(book.favorite==0){
-            //view.button_fav.setBackgroundColor(Color.TRANSPARENT)
             view.button_fav.setImageResource(R.drawable.ic_star_border_black_24dp)
         }else{
-            //view.button_fav.setBackgroundColor(Color.TRANSPARENT)
             view.button_fav.setImageResource(R.drawable.ic_star_amarillo_24dp)
         }
 
@@ -94,9 +95,9 @@ class MainContentFragment : Fragment() {
     }
 
     fun getAuthor(bookId : String): String{
-        val array = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
+        val arrayAuthors = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
         var cadena = ""
-        array.forEach { author : Author ->
+        arrayAuthors.forEach { author : Author ->
             cadena = if(author.name.isEmpty()){
                 "There are not authors"
             }else{
@@ -105,5 +106,33 @@ class MainContentFragment : Fragment() {
         }
         return cadena
     }
+
+    fun getEditorial(bookId: String): String{
+        val arrayEditorials = bookViewModel.getEditorialPerBook(bookId).value?:ArrayList()
+        var cadena = ""
+        arrayEditorials.forEach { editorial : Editorial ->
+            cadena = if(editorial.name.isEmpty()){
+                "There are not authors"
+            }else{
+                editorial.name + " "
+            }
+        }
+        return cadena
+    }
+
+    fun getTag(bookId: String): String{
+        val arrayTags = bookViewModel.getTagPerBook(bookId).value?:ArrayList()
+        var cadena = ""
+        arrayTags.forEach { tag : Tag ->
+            cadena = if(tag.word.isEmpty()){
+                "There are not authors"
+            }else{
+                tag.word + " "
+            }
+        }
+        return cadena
+    }
+
+
 
 }
