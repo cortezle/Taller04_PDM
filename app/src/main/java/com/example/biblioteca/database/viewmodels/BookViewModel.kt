@@ -1,6 +1,7 @@
 package com.example.biblioteca.database.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -100,7 +101,10 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
                 if(idAuthor != 0){
                     if(checkAuthors(author.name, arrayAuthor)){
                         insertAuthor(author)
+                        Log.d("ID AUTHOR", author.idAuthor.toString())
                         insertBookXAuthor(BookXAuthor(book.idBook, author.idAuthor))
+                        insertAuthor(Author(author.idAuthor,author.name))
+
                     }
                 }
             }

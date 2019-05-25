@@ -14,10 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.biblioteca.R
 import com.example.biblioteca.database.entities.Author
 import com.example.biblioteca.database.entities.Book
+import com.example.biblioteca.database.entities.Editorial
 import com.example.biblioteca.database.viewmodels.BookViewModel
 import com.example.biblioteca.utils.AppConstants
 import kotlinx.android.synthetic.main.fragment_main_content.*
 import kotlinx.android.synthetic.main.fragment_main_content.view.*
+import java.util.ArrayList
 
 class MainContentFragment : Fragment() {
 
@@ -58,7 +60,7 @@ class MainContentFragment : Fragment() {
 
         view.textView_Author.text = getAuthor(book.idBook)
         view.textView_Edition.text = book.edition.toString()
-        //view.textView_Editorial.text = book.editorial
+        //¿view.textView_Editorial.text = book.editorial
         view.textView_Isbn.text = book.idBook
         view.textView_Synopsis.text = book.synopsis
         //view.textView_Tags.text = book.tags
@@ -72,29 +74,24 @@ class MainContentFragment : Fragment() {
                 book.favorite=0
                 bookViewModel.removeFavorite(book.idBook)
             }
-
-
         }
 
         Glide.with(view).load(book.cover)
             .placeholder(R.drawable.ic_launcher_background)
             .into(view.imageView_book)
-
     }
 
     fun getAuthor(bookId : String): String{
         val array = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
         var cadena = ""
-        for(author : Author in array){
-            if(author.name.isEmpty()){
-                cadena = "Autor no reconocido"
+        array.forEach { author : Author ->
+            cadena = if(author.name.isEmpty()){
+                "There are not authors"
             }else{
-                cadena = author.name + " "
+                author.name + " "
             }
-            println(author.name)
         }
         return cadena
     }
-
 
 }
