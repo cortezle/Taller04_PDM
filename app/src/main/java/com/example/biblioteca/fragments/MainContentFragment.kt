@@ -73,9 +73,12 @@ class MainContentFragment : Fragment() {
         val array = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
         var cadena = ""
         for(author : Author in array){
-            cadena = author.name + " "
+            if(author.name.isEmpty()){
+                cadena = "Autor no reconocido"
+            }else{
+                cadena = author.name + " "
+            }
             println(author.name)
-
         }
         return cadena
     }
