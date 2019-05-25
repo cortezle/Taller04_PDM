@@ -80,9 +80,13 @@ class BookViewModel(application: Application) : AndroidViewModel(application){
 
     fun getTagPerBook(bookId : String): LiveData<List<Tag>> = repository.getTagPerBook(bookId)
 
-    fun addFavorite(idBook : String) = repository.addFavorite(idBook)
+    fun addFavorite(idBook : String) = viewModelScope.launch(Dispatchers.IO){
+        repository.addFavorite(idBook)
+    }
 
-    fun removeFavorite(idBook : String) = repository.removeFavorite(idBook)
+    fun removeFavorite(idBook : String) = viewModelScope.launch(Dispatchers.IO){
+        repository.removeFavorite(idBook)
+    }
 
 
     fun insertListAuthor(authors : ArrayList<String>, book : Book){

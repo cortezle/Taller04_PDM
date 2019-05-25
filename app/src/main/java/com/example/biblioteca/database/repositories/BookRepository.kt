@@ -77,12 +77,13 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
         bookXTagDao.insert(bookXTag)
     }
 
-
-    fun addFavorite(id : String){
+    @WorkerThread
+    suspend fun addFavorite(id : String){
         bookDao.addFavorite(id)
     }
 
-    fun removeFavorite(id : String){
+    @WorkerThread
+    suspend fun removeFavorite(id : String){
         bookDao.removeFavorite(id)
     }
 }

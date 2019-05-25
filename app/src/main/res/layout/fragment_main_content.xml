@@ -189,7 +189,7 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/button_star"
+            android:id="@+id/button_fav"
             android:backgroundTint="@color/cardview_light_background"
             android:drawableBottom="@drawable/ic_star_amarillo_24dp"
             android:drawableTop="@android:drawable/btn_star_big_off" />

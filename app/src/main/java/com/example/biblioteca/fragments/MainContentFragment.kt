@@ -63,6 +63,19 @@ class MainContentFragment : Fragment() {
         view.textView_Synopsis.text = book.synopsis
         //view.textView_Tags.text = book.tags
 
+        view.button_fav.setOnClickListener {
+            if(book.favorite==0){
+                book.favorite=1
+                bookViewModel.addFavorite(book.idBook)
+
+            }else{
+                book.favorite=0
+                bookViewModel.removeFavorite(book.idBook)
+            }
+
+
+        }
+
         Glide.with(view).load(book.cover)
             .placeholder(R.drawable.ic_launcher_background)
             .into(view.imageView_book)
