@@ -1,6 +1,7 @@
 package com.example.biblioteca.fragments
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -62,15 +63,26 @@ class MainContentFragment : Fragment() {
         view.textView_Isbn.text = book.idBook
         view.textView_Synopsis.text = book.synopsis
         //view.textView_Tags.text = book.tags
+        view.button_fav.setBackgroundColor(Color.TRANSPARENT)
+        if(book.favorite==0){
+            //view.button_fav.setBackgroundColor(Color.TRANSPARENT)
+            view.button_fav.setImageResource(R.drawable.ic_star_border_black_24dp)
+        }else{
+            //view.button_fav.setBackgroundColor(Color.TRANSPARENT)
+            view.button_fav.setImageResource(R.drawable.ic_star_amarillo_24dp)
+        }
 
         view.button_fav.setOnClickListener {
             if(book.favorite==0){
                 book.favorite=1
                 bookViewModel.addFavorite(book.idBook)
+                button_fav.setImageResource(R.drawable.ic_star_amarillo_24dp)
+
 
             }else{
                 book.favorite=0
                 bookViewModel.removeFavorite(book.idBook)
+                button_fav.setImageResource(R.drawable.ic_star_border_black_24dp)
             }
 
 
