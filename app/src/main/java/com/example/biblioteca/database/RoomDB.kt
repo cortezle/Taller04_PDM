@@ -151,6 +151,40 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book7, arrayOf(author7), arrayOf(editorial7), arrayOf(tag71,tag72,tag73), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
 
+            var book8 = Book("Cumbres Borroscosas", "caratula.jpg", 3,
+                "El ambiente cultural que se respiro en la casa de los bronte desde la epoca temprana condujo a la " +
+                        "precocidad literaria de las 3 hermanas emily bronte a pesar de su corta existencia esta considerada" +
+                        "como una artista consumida y muy por encima de su epoca","978-95-376-0835-8",0)
+            var author8 = "Emily Bronte"
+            var editorial8 = "Letras Universales"
+            var tag81 = "Amor"
+            var tag82 = "Epoca antigua"
+            var tag83 = "mediaval"
+
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book8, arrayOf(author8), arrayOf(editorial8), arrayOf(tag81,tag82,tag83), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+
+            var book9 = Book("Adulterio", "caratula.jpg", 1,
+                "Linda está casada con un hombre rico, tienen dos hijos y la familia vive en una hermosa casa en Ginebra, Suiza. Trabaja en el periódico más importante del país," +
+                        " es guapa, viste bien y tiene todo lo que se pueda desear. A ojos de todos, su vida es perfecta. ","978-84-08-13162-5 ",0)
+            var author9 = "Paulo Cohelo"
+            var editorial9 = "Planeta"
+            var tag9 = "Novela"
+            var tag92 = "Contemporaneo"
+            var tag93 = "Interesante"
+
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book9, arrayOf(author9), arrayOf(editorial9), arrayOf(tag9,tag92,tag93), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+
+            var book10 = Book("Mi pecado", "caratula.jpg", 1,
+                "Conchita Montenegro desembarcó en Hollywood con apenas 19 años. Hermosa, inteligente e indómita, la sonora bofetada que propinó a un Clark Gable que se pasaba " +
+                        "de listo nada más empezar su carrera la situó entre las principales estrellas del momento. ","978-84-670-5562-7",0)
+            var author10 = "Javier Moro"
+            var editorial_10 = "Booket"
+            var tag_10 = "General"
+            var tag_10_1 = "Contemporaneo"
+            var tag10_2 = "Novela"
+
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book10, arrayOf(author10), arrayOf(editorial_10), arrayOf(tag_10,tag_10_1,tag10_2), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+
         }
 
         suspend fun insertMain(bookDao : BookDao, authorDao: AuthorDao, editorialDao: EditorialDao, tagDao: TagDao, book : Book, authors : Array<String>, editorials: Array<String>,
