@@ -110,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Editorial: "
+            android:text="Editorial: "
             android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
         <TextView
@@ -129,7 +129,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" ISBN: "
+            android:text="ISBN: "
             android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
         <TextView
@@ -148,7 +148,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Tag's: "
+            android:text="Tag's: "
             android:textColor="@android:color/background_dark"
             android:textSize="25dp" />
         <TextView
