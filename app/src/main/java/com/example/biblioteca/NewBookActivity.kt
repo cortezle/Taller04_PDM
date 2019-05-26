@@ -35,32 +35,30 @@ class NewBookActivity : AppCompatActivity() {
             && TextUtils.isEmpty(editText_isbn.text) && TextUtils.isEmpty(editText_synopsis.text)
             && TextUtils.isEmpty(editText_tags.text)){
             Toast.makeText(applicationContext, "Please fill all the fields",Toast.LENGTH_SHORT).show()
-        } else{
+        } else {
             var title = editText_title.text.toString()
             var edicion = editText_edition.text.toString().toInt()
-            var authors = subString(editText_author.text.toString())
-            var edits = subString(editText_editorial.text.toString())
+            var authors = editText_author.text.toString()
+            var edits = editText_editorial.text.toString()
             var id = editText_isbn.text.toString()
             var synopsis = editText_synopsis.text.toString()
-            var tags = subString(editText_tags.text.toString())
+            var tags = editText_tags.text.toString()
 
-            var book = Book(title, "cover.jpg", edicion, synopsis, id, 0)
+            var book = Book(title, authors, "cover.jpg", edicion, edits, synopsis, id, tags, 0)
             if (edicion.equals(Int)){
-
                 Toast.makeText(this, "el campo edicion tiene que ser un numero", Toast.LENGTH_SHORT).show()
-            }else
-            {
+            }else {
                 bookViewModel.insertBook(book)
             }
 
-            bookViewModel.insertListAuthor(authors, book)
+            /*bookViewModel.insertListAuthor(authors, book)
             bookViewModel.insertListEditorial(edits, book)
-            bookViewModel.insertListTag(tags, book)
+            bookViewModel.insertListTag(tags, book)*/
         }
         finish()
     }
 
-    fun subString(campo : String) : ArrayList<String>{
+    /*fun subString(campo : String) : ArrayList<String>{
         var array = ArrayList<String>()
         var index0 = 0
         var indexf = 0
@@ -78,5 +76,5 @@ class NewBookActivity : AppCompatActivity() {
         }
         array.add(campo.substring(index0, indexf))
         return array
-    }
+    }*/
 }

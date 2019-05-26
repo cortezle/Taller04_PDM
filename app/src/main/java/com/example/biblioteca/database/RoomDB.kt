@@ -2,6 +2,7 @@ package com.example.biblioteca.database
 
 import android.R
 import android.content.Context
+import android.util.Log
 import android.util.Range
 import androidx.room.Database
 import androidx.room.Room
@@ -73,121 +74,137 @@ public abstract class BookRoomDatabase : RoomDatabase(){
         suspend fun populateDatabase(bookDao: BookDao, editorialDao: EditorialDao, tagDao: TagDao, authorDao: AuthorDao,
                                      bookXAuthorDao: BookXAuthorDao, bookXEditorialDao: BookXEditorialDao, bookXTagDao: BookXTagDao){
 
-            var book1 = Book("El extranjero", "caratula.jpg", 1,
+            var book1 = Book("El extranjero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
                 "Meursault recibe un mañana un telegrama en el que se le notifica la muerte de su madre. " +
                         "En una playa de Argelia mata inesperadamente a un hombre y es sometido a juicio absurdo." +
                         "¿Cuales son las razones por las que vale la pena nacer, morir y matar? la historia de Meursault " +
-                        "reaviva nuestro intento por dar respuesta a estas preguntas", "84-89669-45-7", 0)
-            var author1 = "Albert Camus"
+                        "reaviva nuestro intento por dar respuesta a estas preguntas", "84-89669-45-7",
+                    "Morir, Nacer, Matar", 0)
+            bookDao.insert(book1)
+            /*var author1 = "Albert Camus"
             var editorial1 = "Mateu Cromo S.A."
             var tag11 = "Morir"
             var tag12 = "Nacer"
             var tag13 = "Matar"
 
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book1, arrayOf(author1), arrayOf(editorial1), arrayOf(tag11, tag12, tag13), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book1, arrayOf(author1), arrayOf(editorial1), arrayOf(tag11, tag12, tag13), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
-
-            var book2 = Book("The Shining","caratula.jpg",1, "Jack Torrence's new job at the Overlook Hotel is the perfect chance for a fresh start. " +
+            var book2 = Book("The Shining", "Stephen King", "caratula.jpg", 1, "Random House",
+                    "Jack Torrence's new job at the Overlook Hotel is the perfect chance for a fresh start. " +
                     "As the off-season caretaker at the atmospheric old hotel, he'll have plenty of time to spend reconnecting with his family, all though the hotel keeps some " +
-                    "secrets to the one's who shine.", "978-0-385-12167-5",0)
-            var author2 = "Stephen King"
-            var editorial2 = "Random House"
+                    "secrets to the one's who shine.", "978-0-385-12167-5", "Morir", 0)
+            bookDao.insert(book2)
+            /*var author2 = Author(1, "Stephen King")
+            var editorial2 = Editorial(1, "Random House")
             var tag21 = "Morir"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book2, arrayOf(author2), arrayOf(editorial2), arrayOf(tag21), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book2, arrayOf(author2), arrayOf(editorial2), arrayOf(tag21), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book3 = Book("Harry Potter and the chamber of secrets", "caratula.jpg", 1,
-                "The Dursleys were so mean and hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry" +
+            var book3 = Book("Harry Potter and the chamber of secrets", "J.K. Rowling", "caratula.jpg", 1, "Scholastic",
+                        "The Dursleys were so mean and hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry" +
                         ". But just as he's packing his bags, Harry receives a warning from a strange, impish creature named Dobby who says that if Harry Potter returns to Hogwarts," +
-                        " disaster will strike","950-0-42068-6",0)
-            var author3 = "J.K. Rowling"
+                        " disaster will strike","950-0-42068-6", "Adventure", 0)
+            bookDao.insert(book3)
+            /*var author3 = "J.K. Rowling"
             var editorial3 = "Scholastic"
             var tag31 = "Adventure"
-            var tag32 = ""
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book3, arrayOf(author3), arrayOf(editorial3), arrayOf(tag31,tag32), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book3, arrayOf(author3), arrayOf(editorial3), arrayOf(tag31,tag32), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book4 = Book("The catcher in the rye", "caratula.jpg", 1,
+            var book4 = Book("The catcher in the rye", "J.D Salinger", "caratula.jpg", 1, "Collins Crime Club, Pan Books",
                 "The Catcher in the Rye is set around the 1950s and is narrated by a young man named Holden Caulfield. Holden is not specific about his location while he’s telling the story," +
                         " but he makes it clear that he is undergoing treatment in a mental hospital or sanatorium. The events he narrates take place in the few days between the end of the fall school" +
-                        " term and Christmas, when Holden is sixteen years old.","842-0-63409-3",0)
-            var author4 = "J.D Salinger"
+                        " term and Christmas, when Holden is sixteen years old.","842-0-63409-3", "Christmast, Hospital", 0)
+            bookDao.insert(book4)
+            /*var author4 = "J.D Salinger"
             var editorial4 = "Alianza"
             var tag41 = "Christmast"
-            var tag42 = "hospital"
+            var tag42 = "Hospital"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book4, arrayOf(author4), arrayOf(editorial4), arrayOf(tag41,tag42), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book4, arrayOf(author4), arrayOf(editorial4), arrayOf(tag41,tag42), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book5 = Book("Asesinato en el oriente express", "caratula.jpg", 1,
-                "When a murder occurs on the train on which he's travelling, celebrated detective Hercule Poirot is recruited to solve the case."," 9780007527502",0)
-            var author5 = "Agatha Christie"
+            var book5 = Book("Asesinato en el oriente express", "Agatha Christie", "caratula.jpg", 1, "Collins Crime Club, Pan Books",
+                "When a murder occurs on the train on which he's travelling, celebrated detective Hercule Poirot is recruited to solve the case.",
+                "9780007527502", "Misterio, Asesinato", 0)
+            bookDao.insert(book5)
+            /*var author5 = "Agatha Christie"
             var editorial5 = "Collins Crime Club"
             var editorial51 = "Pan Books"
             var tag51 = "Misterio"
             var tag52 = "Asesinato"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book5, arrayOf(author5), arrayOf(editorial5, editorial51), arrayOf(tag51,tag52), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book5, arrayOf(author5), arrayOf(editorial5, editorial51), arrayOf(tag51,tag52), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book6 = Book("El Alquimista", "caratula.jpg", 1,
-                "Poderosa, sencilla, sabia e inspiradora, ésta es la historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hacia el " +
+            var book6 = Book("El Alquimista", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+                        "Poderosa, sencilla, sabia e inspiradora, ésta es la historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hacia el " +
                         "desierto egipcio en busca de un tesoro oculto en las pirámides. Nadie sabe lo que" +
-                        " contiene el tesoro, ni si Santiago será capaz de superar los obstáculos del camino. "," 978-84-08-14475-5",0)
-            var author6 = "Paulo Cohelo"
+                        " contiene el tesoro, ni si Santiago será capaz de superar los obstáculos del camino. ",
+                        "978-84-08-14475-5", "Inspirador, Suenio", 0)
+            bookDao.insert(book6)
+            /*var author6 = "Paulo Cohelo"
             var editorial6 = "Planeta"
-            var tag61 = "inspirador"
-            var tag62 = "suenio"
+            var tag61 = "Inspirador"
+            var tag62 = "Suenio"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book6, arrayOf(author6), arrayOf(editorial6), arrayOf(tag61,tag62), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book6, arrayOf(author6), arrayOf(editorial6), arrayOf(tag61,tag62), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book7 = Book("La espia", "caratula.jpg", 1,
-                "Paulo Coelho ahonda de forma magistral en la vida de una de las mujeres más fascinantes y desconocidas de la Historia. Sensual, fuerte y contradictoria, " +
-                        "Mata Hari se ha convertido en un icono " +
-                        "por enfrentarse a los cánones de su época y luchar por ser una mujer independiente y libre en un mundo convulso."," 978-84-08-16180-6",0)
-            var author7 = "Paulo Cohelo"
+            var book7 = Book("La espia", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+                        "Paulo Coelho ahonda de forma magistral en la vida de una de las mujeres más fascinantes y desconocidas " +
+                        "de la Historia. Sensual, fuerte y contradictoria, Mata Hari se ha convertido en un icono " +
+                        "por enfrentarse a los cánones de su época y luchar por ser una mujer independiente y libre en un mundo convulso.",
+                        "978-84-08-16180-6", "Primera guerra mundial, Indomable, Mujer", 0)
+            bookDao.insert(book7)
+            /*var author7 = "Paulo Cohelo"
             var editorial7 = "Planeta"
             var tag71 = "Primera guerra mundial"
-            var tag72 = "indomable"
-            var tag73 = "mujer"
+            var tag72 = "Indomable"
+            var tag73 = "Mujer"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book7, arrayOf(author7), arrayOf(editorial7), arrayOf(tag71,tag72,tag73), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book7, arrayOf(author7), arrayOf(editorial7), arrayOf(tag71,tag72,tag73), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book8 = Book("Cumbres Borroscosas", "caratula.jpg", 3,
-                "El ambiente cultural que se respiro en la casa de los bronte desde la epoca temprana condujo a la " +
+            var book8 = Book("Cumbres Borroscosas", "Emily Bronte", "caratula.jpg", 3, "Letras Universales",
+                        "El ambiente cultural que se respiro en la casa de los bronte desde la epoca temprana condujo a la " +
                         "precocidad literaria de las 3 hermanas emily bronte a pesar de su corta existencia esta considerada" +
-                        "como una artista consumida y muy por encima de su epoca","978-95-376-0835-8",0)
-            var author8 = "Emily Bronte"
+                        "como una artista consumida y muy por encima de su epoca",
+                        "978-95-376-0835-8", "Amor, Epoca antigua, Mediaval", 0)
+            bookDao.insert(book8)
+            /*var author8 = "Emily Bronte"
             var editorial8 = "Letras Universales"
             var tag81 = "Amor"
             var tag82 = "Epoca antigua"
-            var tag83 = "mediaval"
+            var tag83 = "Mediaval"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book8, arrayOf(author8), arrayOf(editorial8), arrayOf(tag81,tag82,tag83), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book8, arrayOf(author8), arrayOf(editorial8), arrayOf(tag81,tag82,tag83), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book9 = Book("Adulterio", "caratula.jpg", 1,
-                "Linda está casada con un hombre rico, tienen dos hijos y la familia vive en una hermosa casa en Ginebra, Suiza. Trabaja en el periódico más importante del país," +
-                        " es guapa, viste bien y tiene todo lo que se pueda desear. A ojos de todos, su vida es perfecta. ","978-84-08-13162-5 ",0)
-            var author9 = "Paulo Cohelo"
+            var book9 = Book("Adulterio", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+                        "Linda está casada con un hombre rico, tienen dos hijos y la familia vive en una hermosa casa en Ginebra, Suiza. Trabaja en el periódico más importante del país," +
+                        " es guapa, viste bien y tiene todo lo que se pueda desear. A ojos de todos, su vida es perfecta. ",
+                        "978-84-08-13162-5", "Novela, Contemporaneo, Interesante",0)
+            bookDao.insert(book9)
+            /*var author9 = "Paulo Cohelo"
             var editorial9 = "Planeta"
             var tag9 = "Novela"
             var tag92 = "Contemporaneo"
             var tag93 = "Interesante"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book9, arrayOf(author9), arrayOf(editorial9), arrayOf(tag9,tag92,tag93), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book9, arrayOf(author9), arrayOf(editorial9), arrayOf(tag9,tag92,tag93), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book10 = Book("Mi pecado", "caratula.jpg", 1,
-                "Conchita Montenegro desembarcó en Hollywood con apenas 19 años. Hermosa, inteligente e indómita, la sonora bofetada que propinó a un Clark Gable que se pasaba " +
-                        "de listo nada más empezar su carrera la situó entre las principales estrellas del momento. ","978-84-670-5562-7",0)
-            var author10 = "Javier Moro"
+            var book10 = Book("Mi pecado", "Javier Moro", "caratula.jpg", 1, "Booket",
+                        "Conchita Montenegro desembarcó en Hollywood con apenas 19 años. Hermosa, inteligente e indómita, la sonora bofetada que propinó a un Clark Gable que se pasaba " +
+                        "de listo nada más empezar su carrera la situó entre las principales estrellas del momento. ",
+                        "978-84-670-5562-7","General, Contemporaneo, Novela", 0)
+            bookDao.insert(book10)
+            /*var author10 = "Javier Moro"
             var editorial_10 = "Booket"
             var tag_10 = "General"
             var tag_10_1 = "Contemporaneo"
             var tag10_2 = "Novela"
 
-            insertMain(bookDao, authorDao, editorialDao, tagDao, book10, arrayOf(author10), arrayOf(editorial_10), arrayOf(tag_10,tag_10_1,tag10_2), bookXAuthorDao, bookXEditorialDao, bookXTagDao)
+            insertMain(bookDao, authorDao, editorialDao, tagDao, book10, arrayOf(author10), arrayOf(editorial_10), arrayOf(tag_10,tag_10_1,tag10_2), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
         }
 
-        suspend fun insertMain(bookDao : BookDao, authorDao: AuthorDao, editorialDao: EditorialDao, tagDao: TagDao, book : Book, authors : Array<String>, editorials: Array<String>,
+        /*suspend fun insertMain(bookDao : BookDao, authorDao: AuthorDao, editorialDao: EditorialDao, tagDao: TagDao, book : Book, authors : Array<String>, editorials: Array<String>,
                                tags: Array<String>, bookXAuthorDao: BookXAuthorDao, bookXEditorialDao: BookXEditorialDao, bookXTagDao: BookXTagDao){
             bookDao.insert(book)
 
@@ -205,6 +222,12 @@ public abstract class BookRoomDatabase : RoomDatabase(){
                         }
                     }
                 }
+            }else{
+                var i = 0
+                for(author : String in authors){
+                    authorDao.insert(Author(i, author))
+                    i++
+                }
             }
 
             var arrayEditorial = editorialDao.getAllEditorial().value
@@ -221,6 +244,12 @@ public abstract class BookRoomDatabase : RoomDatabase(){
                         }
                     }
                 }
+            }else{
+                var i = 0
+                for(edit : String in editorials){
+                    editorialDao.insert(Editorial(i, edit))
+                    i++
+                }
             }
 
             var arrayTag = tagDao.getAllTag().value
@@ -236,6 +265,12 @@ public abstract class BookRoomDatabase : RoomDatabase(){
                             bookXTagDao.insert(BookXTag(book.idBook, tag.idTag))
                         }
                     }
+                }
+            }else{
+                var i = 0
+                for(tag : String in tags){
+                    tagDao.insert(Tag(i, tag))
+                    i++
                 }
             }
         }
@@ -259,6 +294,6 @@ public abstract class BookRoomDatabase : RoomDatabase(){
                 if(word == tag.word) return false
             }
             return true
-        }
+        }*/
     }
 }

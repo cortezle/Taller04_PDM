@@ -1,14 +1,11 @@
 package com.example.biblioteca.fragments
 
-import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 
@@ -36,18 +33,15 @@ class MainContentFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fragment_main_content,container,false)
 
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
-
         if(savedInstanceState != null) book = savedInstanceState.getParcelable(AppConstants.TEXT_KEY_BOOK)
+
         bindData(view)
         return view
     }
@@ -60,12 +54,12 @@ class MainContentFragment : Fragment() {
     fun bindData(view: View) {
         view.textView_title.text = book.title
 
-        view.textView_Author.text = getAuthor(book.idBook)
+        view.textView_Author.text = book.author
         view.textView_Edition.text = book.edition.toString()
-        view.textView_Editorial.text = getEditorial(book.idBook)
+        view.textView_Editorial.text = book.editorial
         view.textView_Isbn.text = book.idBook
         view.textView_Synopsis.text = book.synopsis
-        view.textView_Tags.text = getTag(book.idBook)
+        view.textView_Tags.text = book.tags
 
         view.button_fav.setBackgroundColor(Color.TRANSPARENT)
 
@@ -94,10 +88,10 @@ class MainContentFragment : Fragment() {
             .into(view.imageView_book)
     }
 
-    fun getAuthor(bookId : String): String{
-        val arrayAuthors = bookViewModel.getAuthorPerBook(bookId).value?:ArrayList()
+    /*fun getAuthor(bookId : String): String{
+        val arrayAuthors : List<Author>? = bookViewModel.getAuthorPerBook(bookId).value
         var cadena = ""
-        arrayAuthors.forEach { author : Author ->
+        arrayAuthors?.forEach { author : Author ->
             cadena = if(author.name.isEmpty()){
                 "There are not authors"
             }else{
@@ -131,8 +125,5 @@ class MainContentFragment : Fragment() {
             }
         }
         return cadena
-    }
-
-
-
+    }*/
 }

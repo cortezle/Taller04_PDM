@@ -40,7 +40,7 @@ class BookRepository(private val bookDao : BookDao, private val authorDao : Auth
     }
 
     fun getBookPerAuthor(authorId : Int):LiveData<List<Book>>{
-     return   bookXAuthorDao.getBookPerAuthor(authorId)
+        return bookXAuthorDao.getBookPerAuthor(authorId)
     }
 
     fun getAuthorPerBook(bookId : String):LiveData<List<Author>>{
