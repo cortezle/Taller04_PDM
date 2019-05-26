@@ -74,7 +74,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
         suspend fun populateDatabase(bookDao: BookDao, editorialDao: EditorialDao, tagDao: TagDao, authorDao: AuthorDao,
                                      bookXAuthorDao: BookXAuthorDao, bookXEditorialDao: BookXEditorialDao, bookXTagDao: BookXTagDao){
 
-            var book1 = Book("El extranjero", "Albert Camus", "caratula.jpg", 1, "Mateu Cromo S.A.",
+            var book1 = Book("El extranjero", "Albert Camus", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/9/original/portada_el-extranjero_albert-camus_201505261225.jpg", 1, "Mateu Cromo S.A.",
                 "Meursault recibe un mañana un telegrama en el que se le notifica la muerte de su madre. " +
                         "En una playa de Argelia mata inesperadamente a un hombre y es sometido a juicio absurdo." +
                         "¿Cuales son las razones por las que vale la pena nacer, morir y matar? la historia de Meursault " +
@@ -89,7 +89,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book1, arrayOf(author1), arrayOf(editorial1), arrayOf(tag11, tag12, tag13), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book2 = Book("The Shining", "Stephen King", "caratula.jpg", 1, "Random House",
+            var book2 = Book("The Shining", "Stephen King", "http://t0.gstatic.com/images?q=tbn:ANd9GcR1uTHLLpBhlXQEVDzar5kTUuDxo99jueJWXgVeTaQN1N6N58Tq", 1, "Random House",
                     "Jack Torrence's new job at the Overlook Hotel is the perfect chance for a fresh start. " +
                     "As the off-season caretaker at the atmospheric old hotel, he'll have plenty of time to spend reconnecting with his family, all though the hotel keeps some " +
                     "secrets to the one's who shine.", "978-0-385-12167-5", "Morir", 0)
@@ -100,7 +100,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book2, arrayOf(author2), arrayOf(editorial2), arrayOf(tag21), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book3 = Book("Harry Potter and the chamber of secrets", "J.K. Rowling", "caratula.jpg", 1, "Scholastic",
+            var book3 = Book("Harry Potter and the chamber of secrets", "J.K. Rowling", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/275/original/portada_los-tesoros-de-harry-potter-edicion-actualizada_aa-vv_201807191136.jpg", 1, "Scholastic",
                         "The Dursleys were so mean and hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry" +
                         ". But just as he's packing his bags, Harry receives a warning from a strange, impish creature named Dobby who says that if Harry Potter returns to Hogwarts," +
                         " disaster will strike","950-0-42068-6", "Adventure", 0)
@@ -111,10 +111,10 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book3, arrayOf(author3), arrayOf(editorial3), arrayOf(tag31,tag32), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book4 = Book("The catcher in the rye", "J.D Salinger", "caratula.jpg", 1, "Collins Crime Club, Pan Books",
-                "The Catcher in the Rye is set around the 1950s and is narrated by a young man named Holden Caulfield. Holden is not specific about his location while he’s telling the story," +
-                        " but he makes it clear that he is undergoing treatment in a mental hospital or sanatorium. The events he narrates take place in the few days between the end of the fall school" +
-                        " term and Christmas, when Holden is sixteen years old.","842-0-63409-3", "Christmast, Hospital", 0)
+            var book4 = Book("El tren de las 4.50", "Agatha Christie", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/271/original/portada_el-tren-de-las-450_agatha-christie_201805011904.jpg", 1,
+                "Booket",
+                "Por un instante, los dos trenes circularon paralelos. En ese preciso momento, Elspeth McGillicuddy presenció un asesinato. Desde su vagón vio con impotencia como en el otro tren un hombre agarraba sin piedad el cuello " +
+                        "de una mujer hasta estrangularla. Después el tren se alejó.","978-84-670-5299-2", "Asesinato, tren", 0)
             bookDao.insert(book4)
             /*var author4 = "J.D Salinger"
             var editorial4 = "Alianza"
@@ -123,7 +123,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book4, arrayOf(author4), arrayOf(editorial4), arrayOf(tag41,tag42), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book5 = Book("Asesinato en el oriente express", "Agatha Christie", "caratula.jpg", 1, "Collins Crime Club, Pan Books",
+            var book5 = Book("Asesinato en el oriente express", "Agatha Christie", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/201/original/portada_asesinato-en-el-orient-express_agatha-christie_201505291004.jpg", 1, "Collins Crime Club, Pan Books",
                 "When a murder occurs on the train on which he's travelling, celebrated detective Hercule Poirot is recruited to solve the case.",
                 "9780007527502", "Misterio, Asesinato", 0)
             bookDao.insert(book5)
@@ -135,7 +135,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book5, arrayOf(author5), arrayOf(editorial5, editorial51), arrayOf(tag51,tag52), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book6 = Book("El Alquimista", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+            var book6 = Book("El Alquimista", "Paulo Cohelo", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/120/original/el-alquimista_9788408130451.jpg", 1, "Planeta",
                         "Poderosa, sencilla, sabia e inspiradora, ésta es la historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hacia el " +
                         "desierto egipcio en busca de un tesoro oculto en las pirámides. Nadie sabe lo que" +
                         " contiene el tesoro, ni si Santiago será capaz de superar los obstáculos del camino. ",
@@ -148,7 +148,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book6, arrayOf(author6), arrayOf(editorial6), arrayOf(tag61,tag62), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book7 = Book("La espia", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+            var book7 = Book("La espia", "Paulo Cohelo", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/220/original/portada_la-espia_paulo-coelho_201608021206.jpg", 1, "Planeta",
                         "Paulo Coelho ahonda de forma magistral en la vida de una de las mujeres más fascinantes y desconocidas " +
                         "de la Historia. Sensual, fuerte y contradictoria, Mata Hari se ha convertido en un icono " +
                         "por enfrentarse a los cánones de su época y luchar por ser una mujer independiente y libre en un mundo convulso.",
@@ -162,7 +162,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book7, arrayOf(author7), arrayOf(editorial7), arrayOf(tag71,tag72,tag73), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book8 = Book("Cumbres Borroscosas", "Emily Bronte", "caratula.jpg", 3, "Letras Universales",
+            var book8 = Book("Cumbres Borroscosas", "Emily Bronte", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/69/original/cumbres-borrascosas_9788408009092.jpg", 3, "Letras Universales",
                         "El ambiente cultural que se respiro en la casa de los bronte desde la epoca temprana condujo a la " +
                         "precocidad literaria de las 3 hermanas emily bronte a pesar de su corta existencia esta considerada" +
                         "como una artista consumida y muy por encima de su epoca",
@@ -176,7 +176,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book8, arrayOf(author8), arrayOf(editorial8), arrayOf(tag81,tag82,tag83), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book9 = Book("Adulterio", "Paulo Cohelo", "caratula.jpg", 1, "Planeta",
+            var book9 = Book("Adulterio", "Paulo Cohelo", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/163/original/adulterio_9788408131625.jpg", 1, "Planeta",
                         "Linda está casada con un hombre rico, tienen dos hijos y la familia vive en una hermosa casa en Ginebra, Suiza. Trabaja en el periódico más importante del país," +
                         " es guapa, viste bien y tiene todo lo que se pueda desear. A ojos de todos, su vida es perfecta. ",
                         "978-84-08-13162-5", "Novela, Contemporaneo, Interesante",0)
@@ -189,7 +189,7 @@ public abstract class BookRoomDatabase : RoomDatabase(){
 
             insertMain(bookDao, authorDao, editorialDao, tagDao, book9, arrayOf(author9), arrayOf(editorial9), arrayOf(tag9,tag92,tag93), bookXAuthorDao, bookXEditorialDao, bookXTagDao)*/
 
-            var book10 = Book("Mi pecado", "Javier Moro", "caratula.jpg", 1, "Booket",
+            var book10 = Book("Mi pecado", "Javier Moro", "https://static2planetadelibroscom.cdnstatics.com/usuaris/libros/fotos/292/original/portada_mi-pecado_javier-moro_201902062224.jpg", 1, "Booket",
                         "Conchita Montenegro desembarcó en Hollywood con apenas 19 años. Hermosa, inteligente e indómita, la sonora bofetada que propinó a un Clark Gable que se pasaba " +
                         "de listo nada más empezar su carrera la situó entre las principales estrellas del momento. ",
                         "978-84-670-5562-7","General, Contemporaneo, Novela", 0)
